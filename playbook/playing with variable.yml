@@ -32,10 +32,12 @@
     #    var: device_list[0]
     # #     # var: devices
 
+# executing device list variable using loop
     - name: "1022 - Print each item in list"
       debug:
         msg: "{{ item }}"
       loop: "{{device_list }}"
+      when: item == "R2"
     
     - name: "1030 - OUTPUT DEVICES CREDS"
       debug:
