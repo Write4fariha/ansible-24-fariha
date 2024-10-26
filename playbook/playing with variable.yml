@@ -3,7 +3,10 @@
   hosts: localhost
   gather_facts: false
   vars:
-    device_type: "Router"
+  # fixing the variable with Router,it's static
+    # device_type: "Router"  
+  #putting varaible within "{{}}" will make it dynamic and we can pass any variable value at runtime  
+    device_type: "{{ nts }}"
     devices: 
       - "R1"
       - "R2"
@@ -13,9 +16,11 @@
       password: "India"
   tasks:
     - name: "1010 - OUTPUT DEVICE TYPE"
-      debug:
+      debug:  
         var: device_type
-
+  # We can directly pass variable in debug also and pass it directly into input as -e "nts=value" during run time 
+      #  var: nts
+      #  msg: "{{ nts }}"
     - name: "1020 - OUTPUT DEVICES DATA"
       debug:
         var: devices
