@@ -4,26 +4,33 @@
   gather_facts: false
   vars:
   # fixing the variable with Router,it's static
-    # device_type: "Router"  
+    device_type: "Router"  
   #putting varaible within "{{}}" will make it dynamic and we can pass any variable value at runtime  
-    device_type: "{{ nts }}"
-    devices: 
-      - "R1"
-      - "R2"
-      - "R3"
+    # device_type: "{{ nts }}"
+    # devices:     # 'R1=router1 R2=router2 R3=router3' as -e variable
+    #   - "{{ R1 }}"
+    #   - "{{ R2 }}"
+    #   - "{{ R3 }}"
+
+    # passing 'device_list=["Router1","Router2","Router3"]' as extra vars during execution time
+    # devices: "{{ device_list }}"  
     devices_creds:
       user_name: "NetG"
       password: "India"
   tasks:
     - name: "1010 - OUTPUT DEVICE TYPE"
-      debug:  
-        var: device_type
+      debug:
+       var: device_type
   # We can directly pass variable in debug also and pass it directly into input as -e "nts=value" during run time 
       #  var: nts
       #  msg: "{{ nts }}"
+
     - name: "1020 - OUTPUT DEVICES DATA"
       debug:
-        var: devices
+      # -e '{"device_list":["R1","R2","R3"]}' another pay passing list variable during execution time
+      # var: device_list
+       var: device_list[0]
+    #     # var: devices
     
     - name: "1030 - OUTPUT DEVICES CREDS"
       debug:
