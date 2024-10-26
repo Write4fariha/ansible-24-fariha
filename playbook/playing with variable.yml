@@ -1,0 +1,25 @@
+---
+- name: play A
+  hosts: localhost
+  gather_facts: false
+  vars:
+    device_type: "Router"
+    devices: 
+      - "R1"
+      - "R2"
+      - "R3"
+    devices_creds:
+      user_name: "NetG"
+      password: "India"
+  tasks:
+    - name: "1010 - OUTPUT DEVICE TYPE"
+      debug:
+        var: device_type
+
+    - name: "1020 - OUTPUT DEVICES DATA"
+      debug:
+        var: devices
+    
+    - name: "1030 - OUTPUT DEVICES CREDS"
+      debug:
+        var: devices_creds
