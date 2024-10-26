@@ -25,12 +25,17 @@
       #  var: nts
       #  msg: "{{ nts }}"
 
-    - name: "1020 - OUTPUT DEVICES DATA"
+    # - name: "1020 - OUTPUT DEVICES DATA"
+    #   debug:
+    #   # -e '{"device_list":["R1","R2","R3"]}' another pay passing list variable during execution time
+    #   # var: device_list
+    #    var: device_list[0]
+    # #     # var: devices
+
+    - name: "1022 - Print each item in list"
       debug:
-      # -e '{"device_list":["R1","R2","R3"]}' another pay passing list variable during execution time
-      # var: device_list
-       var: device_list[0]
-    #     # var: devices
+        msg: "{{ item }}"
+      loop: "{{device_list }}"
     
     - name: "1030 - OUTPUT DEVICES CREDS"
       debug:
