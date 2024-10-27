@@ -17,6 +17,13 @@
     devices_creds:
       user_name: "NetG"
       password: "India"
+
+    models:
+      - Router: "cisco4800"
+        Switch: "cisco1800"
+        vendor: "CISCO"
+      - Firewall: "Fortinate"
+        vendor: "Palo Alto" 
   tasks:
     - name: "1010 - OUTPUT DEVICE TYPE"
       debug:
@@ -33,12 +40,18 @@
     # #     # var: devices
 
 # executing device list variable using loop
-    - name: "1022 - Print each item in list"
-      debug:
-        msg: "{{ item }}"
-      loop: "{{device_list }}"
-      when: item == "R2"
+    # - name: "1022 - Print each item in list"
+    #   debug:
+    #     msg: "{{ item }}"
+    #   loop: "{{device_list }}"
+    #   when: item == "R2"
     
     - name: "1030 - OUTPUT DEVICES CREDS"
       debug:
         var: devices_creds
+
+    - name: "1040 - PRINT DEVICE MODEL IN LOOP"
+      debug:
+        var: "item"
+      loop: "{{ models }}"
+      # when: item == "Router" or item == "Firewall"
