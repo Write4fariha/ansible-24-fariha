@@ -1,0 +1,24 @@
+---
+- name: play A
+  hosts: localhost
+  gather_facts: false
+  vars:
+    device_type: "Router"
+    devices:
+     - R1
+     - R2
+     - R3
+    device_creds:
+      user_name: "netg"
+      password_type: "india"
+
+  tasks:
+    - name: "1010 - PRINT DEVICE TYPE"
+      debug:
+        var: "device_type[0:2]"
+    - name: "1020 - PRINT DEVICES "
+      debug:
+        var: devices
+    - name: "1030 -  PRINT DEVICE CRED"
+      debug:
+        var: device_creds

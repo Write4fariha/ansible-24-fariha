@@ -1,3 +1,4 @@
+# Context based data
 ---
 - name: Play A
 #   hosts: "switches" # ansible-playbook -i inv.ini pb_playing_with_inventory.yaml
