@@ -28,13 +28,21 @@
 
     - name: "1020 - PRINT DEVICES "
       debug:
-        var: devices
+      #  var: devices
+        var: devices[1]           # "printing only 2nd letter from list of devices (R1[0],R2[1],R3[2])
 
-    - name: "1030 -  STRIPING & SPLITING IP's"
+    - name: "1030 - DEVICE CREDS "
       debug:
-        # var: ip              # "print IP's as it is with space in start and end "
-        # var: ip.strip()      # "print IP's by removing/striping space in start and end "
-        #  var: ip.split('.')      # "print IP's by spliting wherever . is avaiable from ("10.2.3.4") "
-        # var: ip.strip().split('.')     # "print IP's by removing space in start and end and spliting IP's with ref to '.' "
-        #  var: "ip.strip().split('.')[0]"        # "using strip ,split and indexing together"
-       var: "'.'.join(ip.strip().split('.'))"      # "using join with ref to '.' and put all the split IP as it was original"
+        #  var: device_creds                            # "printing device_creds both name & pass"
+        # var: device_creds.user_name                     # "printing cred only user_name
+        # var: device_creds.user_name[0:1]               # "printing cred only with indexing starts with first alpha and only 1 letter"
+        var: device_creds.user_name.upper()[0:2]          # "printing cred by first converting into upper case and then only printing first 2 letter"
+
+    # - name: "1040 -  STRIPING & SPLITING IP's"
+    #   debug:
+    #     # var: ip              # "print IP's as it is with space in start and end "
+    #     # var: ip.strip()      # "print IP's by removing/striping space in start and end "
+    #     #  var: ip.split('.')      # "print IP's by spliting wherever . is avaiable from ("10.2.3.4") "
+    #     # var: ip.strip().split('.')     # "print IP's by removing space in start and end and spliting IP's with ref to '.' "
+    #     #  var: "ip.strip().split('.')[0]"        # "using strip ,split and indexing together"
+    #    var: "'.'.join(ip.strip().split('.'))"      # "using join with ref to '.' and put all the split IP as it was original"
