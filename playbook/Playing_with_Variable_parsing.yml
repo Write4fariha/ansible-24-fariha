@@ -15,10 +15,19 @@
   tasks:
     - name: "1010 - PRINT DEVICE TYPE"
       debug:
-        var: "device_type[0:2]"
-    - name: "1020 - PRINT DEVICES "
-      debug:
-        var: devices
-    - name: "1030 -  PRINT DEVICE CRED"
-      debug:
-        var: device_creds
+         # var: "device_type[0:2]" # in variable it gives output of indexing ("Ro")
+      #  msg: "device_type[0:2]"   # if we define msg it gives output as it is as data 'device_type[0:2]'
+        # msg: "{{ device_type[0:2] }}"  # if we define msg within {{ }},it gives output as indexing one which is expected ("Ro") which we get same when using var
+        # msg: "{{ device_type[0:3] | upper | lower | upper }}"   # "using indexing and upper lower case in msg"
+        # var: "device_type | upper | lower | upper "       # "using upper lower case in var"
+      #  msg: "{{ device_type.lower() }}"                # "another . method of using upper lower case in msg"
+        # var: "device_type.upper()"                     # "another . method of using upper lower case in var"
+        msg: "Device name is {{ device_type.lower() }}"       # "printing device name is along with output "
+        
+
+    # - name: "1020 - PRINT DEVICES "
+    #   debug:
+    #     var: devices
+    # - name: "1030 -  PRINT DEVICE CRED"
+    #   debug:
+    #     var: device_creds
