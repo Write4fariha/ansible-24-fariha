@@ -9,6 +9,8 @@
 #   hosts: "switches,routers" #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1" only limit switch1&router1 output
   hosts: all_devices #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --combining both groups together and executing as master group
   hosts: all_devices #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1"
+  host: 
+  
   gather_facts: false
 
   tasks:
