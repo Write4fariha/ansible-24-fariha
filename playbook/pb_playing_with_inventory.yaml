@@ -9,11 +9,14 @@
   # hosts: "switches,routers"                   #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1" only limit switch1&router1 output
 #   hosts: all_devices                          #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --combining both groups together and executing as master group
   hosts: "all_devices"                          #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1"
-
+  hosts: all_devices                         #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switches"   =====passing vlans for switches only and with local and group level passing vlan 110,120 and 100
   gather_facts: false
-
+  
   tasks:
     - name: "1010 - OUTPUT DEVICE TYPE"
       debug:
         var: "ansible_host"
-        
+  tasks:
+    - name: "1020 - OUTPUT OF VLAN"
+      debug:
+        var: "vlan"      
