@@ -8,8 +8,8 @@
 #   hosts: "switches,routers"                   #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml it runs all switch and router output without limit
   # hosts: "switches,routers"                   #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1" only limit switch1&router1 output
 #   hosts: all_devices                          #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --combining both groups together and executing as master group
-  # hosts: "all_devices"                          #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1"
-  hosts: cisco_devices
+  hosts: "all_devices"                          #ansible-playbook -i inv.ini pb_playing_with_inventory.yaml --limit "switch1","router1"
+
   gather_facts: false
 
   tasks:
